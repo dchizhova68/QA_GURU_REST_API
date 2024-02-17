@@ -1,3 +1,5 @@
+package tests;
+
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
@@ -5,10 +7,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
 
-public class reqresInTests {
+public class ReqresInTests {
 
     @Test
-    void userEmailTest() {
+    void checkUserEmailByUserIdTest() {
         given()
                 .log().uri()
                 .get("https://reqres.in/api/users/3")
@@ -20,7 +22,7 @@ public class reqresInTests {
     }
 
     @Test
-    void succsessfulCreateUserTest() {
+    void succsessfullCreateUserTest() {
         String authData = "{\"name\": \"Diana Rose\", \"job\":\"Chemist\"}";
         given()
                 .body(authData)
@@ -37,7 +39,7 @@ public class reqresInTests {
     }
 
     @Test
-    void unsuccsessfulRegisterTest() {
+    void unsuccsessfullRegisterTest() {
         String authData = "{\"email\": \"Diana Rose\", \"password\":\"passW0rd\"}";
         given()
                 .body(authData)
@@ -53,7 +55,7 @@ public class reqresInTests {
     }
 
     @Test
-    void listUserTest() {
+    void findUserInlistTest() {
         given()
                 .log().uri()
                 .get("https://reqres.in/api/users?page=1")
@@ -65,7 +67,7 @@ public class reqresInTests {
     }
 
     @Test
-    void resoursNotFoundest() {
+    void resoursNotFoundTest() {
         given()
                 .log().uri()
                 .get("https://reqres.in/api/unknown/23")

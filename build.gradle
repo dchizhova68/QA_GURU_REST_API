@@ -1,9 +1,30 @@
 plugins {
     id 'java-library'
+    id "io.freefair.lombok" version "8.4"
+    id 'io.qameta.allure' version '2.11.2'
+
 }
 
 group = 'gmail.dchizhova68'
 version = '1.0-SNAPSHOT'
+
+
+def allureVersion = "2.21.0",
+restAssuredVersion = "5.4.0"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
 
 
 repositories {
@@ -21,8 +42,12 @@ compileTestJava {
 dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            'io.rest-assured:rest-assured:5.4.0')
+            "org.slf4j:slf4j-simple:2.0.7",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "io.rest-assured:json-path:5.4.0"
+    )
 }
 
 tasks.withType(Test) {
