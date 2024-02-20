@@ -1,7 +1,12 @@
 package tests;
 
 import io.restassured.RestAssured;
-import models.lombok.*;
+import models.lombok.createUserModel.CreateUserRequestModel;
+import models.lombok.createUserModel.CreateUserResponseModel;
+import models.lombok.errorResponseModel.ErrorResponseModel;
+import models.lombok.loginModel.LoginBodyLombokModel;
+import models.lombok.usersModel.UsersResponseModel;
+import models.lombok.usersModel.UserslistModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +58,7 @@ public class ReqresInExtendedTests {
 
     @Test
     void unsuccsessfulRegisterTest() {
-        RegisterRequestModel authData = new RegisterRequestModel();
+        LoginBodyLombokModel authData = new LoginBodyLombokModel();
         authData.setEmail("Diana Rose");
         authData.setPassword("passW0rd");
 
@@ -74,7 +79,7 @@ public class ReqresInExtendedTests {
 
     @Test
     void missingPasswordRegisterTest() {
-        RegisterRequestModel authData = new RegisterRequestModel();
+        LoginBodyLombokModel authData = new LoginBodyLombokModel();
         authData.setEmail("Diana Rose");
 
         ErrorResponseModel response = step("Отправляем запрос на регистрацию без указания пароля", () ->

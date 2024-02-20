@@ -1,4 +1,4 @@
-package models.lombok;
+package models.lombok.errorResponseModel;
 
 import lombok.Data;
 

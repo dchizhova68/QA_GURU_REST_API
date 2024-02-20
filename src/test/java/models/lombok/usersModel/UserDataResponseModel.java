@@ -1,4 +1,4 @@
-package models.lombok;
+package models.lombok.usersModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
